@@ -41,19 +41,14 @@ class Login(Resource):
 
         letters = ''.join(random.choice(string.ascii_lowercase) for i in range(20))
 
-        if gim_user.status_code == 200 and gim_user.json() != None:
+        starwars = requests.get("https://swapi.co/api/people/?search=" + args.nameStarWars)
 
-            starwars = requests.get("https://swapi.co/api/people/?search=" + args.nameStarWars)
-
-            return starwars.json()
-        else:
-            return {"message": "Credencial não cadastrada"}
+        return starwars.json()
 
 
 api.add_resource(Login, '/login')
 
-
 port = int(os.environ.get('PORT', 5000))
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=port)
