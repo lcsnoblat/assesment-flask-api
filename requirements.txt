@@ -7,3 +7,4 @@ flask-restful==0.3.7
 requests
 opencensus-ext-gevent==0.1.0
 opencensus==0.7.0
+pytest
